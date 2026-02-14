@@ -1,5 +1,14 @@
 <html>
+    <title>
+        Homepage
+    </title>
     <body>
+        <%- include('navbar', {links: links}) %>
         <%= message %>
+        <ul>
+            <% users.forEach((user) => { %>
+              <%- include('users/users', {user: user}); %>
+            <% }); %>
+          </ul>
     </body>
 </html>
