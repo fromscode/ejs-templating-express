@@ -2,6 +2,8 @@ const Express = require("express");
 const path = require("node:path");
 const app = Express();
 
+const aboutRouter = require("./routes/about");
+
 const links = [
     { href: "/", text: "Home" },
     { href: "about", text: "About" },
@@ -15,6 +17,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(Express.static(assetsPath));
+app.use("/about", aboutRouter);
 
 app.get("/", (_, res) => {
     res.render("index", { message: "EJS Rocks!", links: links, users: users });
